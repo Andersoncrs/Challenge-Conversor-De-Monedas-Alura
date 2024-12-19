@@ -21,6 +21,9 @@ public class Main {
 
             if(eleccionResultadoMonedaBase.equals("salir")){
                 break;
+            } else if (eleccionResultadoMonedaBase.equals("historial")){
+                listaMonedasConsultadas.mostrarMonedasConvertidas();
+                continue;
             }
             String eleccionResultadoMonedaObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMonedaBase);
 
@@ -37,6 +40,7 @@ public class Main {
                 conversorMoneda.mostrarTasaDeCambio(acronimoMonedaBase, acronimoMonedaObjetivo);
                 double valorMonedaBase =  menu.ingresoValorMonedaBase(eleccionResultadoMonedaBase);
                 conversorMoneda.realizarConversionMoneda(valorMonedaBase);
+                listaMonedasConsultadas.agregarConversionMoneda(conversorMoneda);
 
             } catch (IOException | InterruptedException e) {
                 System.out.println("Hubo un problema en la comunicación con el servidor" +

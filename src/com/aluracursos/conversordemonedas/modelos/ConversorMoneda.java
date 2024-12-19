@@ -34,7 +34,7 @@ public class ConversorMoneda {
                 acronimoMonedaObjetivo +
                 " es de: " +
                 this.tasaDeCambio + " $");
-        System.out.println("Fecha De Actualizacion de la moneda: " + this.fechaActualizacionMoneda);
+        System.out.println("Fecha De Actualización de la moneda: " + this.fechaActualizacionMoneda);
         System.out.println("********************************************************************************");
     }
     public void realizarConversionMoneda(double valorMonedaBase){
@@ -60,5 +60,15 @@ public class ConversorMoneda {
         System.out.println("********************************************************************************");
         System.out.println("Marca de Tiempo de la Consulta: " + this.marcaDeTiempoConsulta);
         System.out.println("********************************************************************************\n");
+    }
+
+    public void mostrarDetallesMoneda(){
+        System.out.println("Moneda Base: " + this.monedaBase);
+        System.out.println("MonedaObjetivo: " + this.monedaObjetivo);
+        System.out.println("Tasa de Cambio: " + this.tasaDeCambio);
+        System.out.println("Valor Moneda Base: " + this.valorMonedaBase);
+        System.out.println("Valor Moneda Objetivo: " + this.valorMonedaObjetivo);
+        System.out.println("Fecha de Actualización Moneda: " + this.fechaActualizacionMoneda);
+        System.out.println("Marca de Tiempo de la Consulta: " + this.marcaDeTiempoConsulta);
     }
 }

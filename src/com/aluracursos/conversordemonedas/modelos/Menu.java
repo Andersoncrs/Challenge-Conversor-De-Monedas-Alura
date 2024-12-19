@@ -27,6 +27,7 @@ public class Menu {
             System.out.println("Ingrese La moneda que desea Convertir: ");
             List<String> listaDeMonedasDisponibles = listaMonedasDisponibles.getListaDeMonedasDisponibles();
             mostrarMenu(listaDeMonedasDisponibles);
+            System.out.println("- Para consultar el Historial, ingrese la palabra \"historial\"");
             System.out.println("- Para Salir ingrese la palabra \"salir\"");
             String eleccionUsuario = scanner.nextLine().toLowerCase().trim();
 
@@ -34,6 +35,8 @@ public class Menu {
             switch (resultadoValidacion) {
                 case "salir":
                     return "salir";
+                case "historial":
+                    return "historial";
                 case "valido":
                     return listaDeMonedasDisponibles.get(Integer.parseInt(eleccionUsuario) - 1);
                 case "invalido":
@@ -64,6 +67,8 @@ public class Menu {
     public String validacionIngresoUsuario(String eleccionUsuario, List<String> listaMenu){
         if (eleccionUsuario.contains("salir")){
             return "salir";
+        } else if(eleccionUsuario.contains("historial")){
+            return "historial";
         }
         return validacionDigito(eleccionUsuario, listaMenu);
     }
