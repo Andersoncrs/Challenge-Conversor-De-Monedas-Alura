@@ -24,6 +24,11 @@ public class Main {
             } else if (eleccionResultadoMonedaBase.equals("historial")){
                 listaMonedasConsultadas.mostrarMonedasConvertidas();
                 continue;
+            } else if(eleccionResultadoMonedaBase.equals("guardar")){
+                if(listaMonedasConsultadas.validarElementosLista()){
+                    continue;
+                }
+                //Logica de guardar Archivo
             }
             String eleccionResultadoMonedaObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMonedaBase);
 

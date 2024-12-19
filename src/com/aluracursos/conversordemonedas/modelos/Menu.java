@@ -11,6 +11,7 @@ public class Menu {
 
     public void mostrarBienvenida(){
         System.out.println("""
+                
                 ********************************************************************************
                 ***********    Bienvenido al Conversor de Monedas WorldChangeRate    ***********
                 ********************************************************************************
@@ -24,10 +25,14 @@ public class Menu {
 
     public String mostrarmenuBase() {
         while (true) {
+            System.out.println("\n********************************************************************************");
+            System.out.println("MENU PRINCIPAL");
+            System.out.println("********************************************************************************");
             System.out.println("Ingrese La moneda que desea Convertir: ");
             List<String> listaDeMonedasDisponibles = listaMonedasDisponibles.getListaDeMonedasDisponibles();
             mostrarMenu(listaDeMonedasDisponibles);
-            System.out.println("- Para consultar el Historial, ingrese la palabra \"historial\"");
+            System.out.println("\n- Para Consultar el Historial, ingrese la palabra \"historial\"");
+            System.out.println("- Para Guadar el Historial de Conversiones ingrese \"guardar\"");
             System.out.println("- Para Salir ingrese la palabra \"salir\"");
             String eleccionUsuario = scanner.nextLine().toLowerCase().trim();
 
@@ -37,6 +42,8 @@ public class Menu {
                     return "salir";
                 case "historial":
                     return "historial";
+                case "guardar":
+                    return "guardar";
                 case "valido":
                     return listaDeMonedasDisponibles.get(Integer.parseInt(eleccionUsuario) - 1);
                 case "invalido":
@@ -69,6 +76,8 @@ public class Menu {
             return "salir";
         } else if(eleccionUsuario.contains("historial")){
             return "historial";
+        } else if (eleccionUsuario.contains("guardar")) {
+            return "guardar";
         }
         return validacionDigito(eleccionUsuario, listaMenu);
     }
