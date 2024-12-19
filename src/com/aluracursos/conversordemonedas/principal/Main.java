@@ -16,19 +16,22 @@ public class Main {
         menu.mostrarBienvenida();
         ListaMonedasConsultadas listaMonedasConsultadas = new ListaMonedasConsultadas();
 
+        loopPrincipal:
         while(true){
             String eleccionResultadoMonedaBase = menu.mostrarmenuBase();
 
-            if(eleccionResultadoMonedaBase.equals("salir")){
-                break;
-            } else if (eleccionResultadoMonedaBase.equals("historial")){
-                listaMonedasConsultadas.mostrarMonedasConvertidas();
-                continue;
-            } else if(eleccionResultadoMonedaBase.equals("guardar")){
-                if(listaMonedasConsultadas.validarElementosLista()){
+            switch (eleccionResultadoMonedaBase) {
+                case "salir":
+                    break loopPrincipal;
+                case "historial":
+                    listaMonedasConsultadas.mostrarMonedasConvertidas();
                     continue;
-                }
-                //Logica de guardar Archivo
+                case "guardar":
+                    if (listaMonedasConsultadas.validarElementosLista()) {
+                        continue;
+                    }
+                    //Logica de guardar Archivo
+                    break;
             }
             String eleccionResultadoMonedaObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMonedaBase);
 
