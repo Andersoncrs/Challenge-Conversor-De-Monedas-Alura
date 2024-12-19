@@ -6,7 +6,7 @@ import com.aluracursos.conversordemonedas.modelos.Menu;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
         Menu menu = new Menu();
 
         menu.mostrarBienvenida();
@@ -22,7 +22,14 @@ public class Main {
             String acronimoMonedaBase = menu.ObtenerAcronimo(eleccionResultadoMonedaBase);
             String acronimoMonedaObjetivo = menu.ObtenerAcronimo(eleccionResultadoMonedaObjetivo);
 
-            System.out.println(new ApiExchangerate(acronimoMonedaBase, acronimoMonedaObjetivo).obtenerDatosApi());
+            try{
+                String resultadoApi = new ApiExchangerate(acronimoMonedaBase, acronimoMonedaObjetivo).obtenerDatosApi();
+                System.out.println(resultadoApi);
+
+            } catch (IOException | InterruptedException e) {
+                System.out.println("Hubo un problema en la comunicación con el servidor" +
+                        "Intentelo Mas Tarde.");
+            }
 
         }
 

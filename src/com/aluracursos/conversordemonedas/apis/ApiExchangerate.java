@@ -19,6 +19,7 @@ public class ApiExchangerate {
         String plantillaUri = "https://v6.exchangerate-api.com/v6/342317a62823f406dd7cc9c3/pair/";
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(plantillaUri + acronimoMonedaBase + "/" + acronimoMonedaObjetivo))
+                .header("Content-Type", "application/json")
                 .GET()
                 .build();
 

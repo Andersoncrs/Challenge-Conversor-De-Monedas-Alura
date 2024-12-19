@@ -79,7 +79,7 @@ public class Menu {
     }
 
     public String ObtenerAcronimo(String moneda){
-        return moneda.trim().substring(0, 3);
+        return moneda.trim().substring(0, 3).toUpperCase();
     }
 }
 
