@@ -30,8 +30,10 @@ public class Main {
                     if (listaMonedasConsultadas.validarElementosLista()) {
                         continue;
                     }
-                    //Logica de guardar Archivo
-                    break;
+                    String jsonConversionesRealizadas = new ConversorJson(listaMonedasConsultadas).
+                            ConvertirListaDeMonedasAJson();
+                    System.out.println(jsonConversionesRealizadas);
+                    continue;
             }
             String eleccionResultadoMonedaObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMonedaBase);
 
