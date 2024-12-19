@@ -1,6 +1,8 @@
 package com.aluracursos.conversordemonedas.principal;
 
 import com.aluracursos.conversordemonedas.apis.ApiExchangerate;
+import com.aluracursos.conversordemonedas.conversordeformatos.ConversorJson;
+import com.aluracursos.conversordemonedas.dtos.ConversionMonedaExchangerate;
 import com.aluracursos.conversordemonedas.modelos.Menu;
 
 import java.io.IOException;
@@ -24,7 +26,9 @@ public class Main {
 
             try{
                 String resultadoApi = new ApiExchangerate(acronimoMonedaBase, acronimoMonedaObjetivo).obtenerDatosApi();
-                System.out.println(resultadoApi);
+                ConversionMonedaExchangerate monedaExchangerate =
+                        new ConversorJson(resultadoApi).convertirAMonedaExchangerate();
+                System.out.println(monedaExchangerate);
 
             } catch (IOException | InterruptedException e) {
                 System.out.println("Hubo un problema en la comunicación con el servidor" +
