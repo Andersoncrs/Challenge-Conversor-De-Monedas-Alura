@@ -1,9 +1,12 @@
 package com.aluracursos.conversordemonedas.principal;
 
+import com.aluracursos.conversordemonedas.apis.ApiExchangerate;
 import com.aluracursos.conversordemonedas.modelos.Menu;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Menu menu = new Menu();
 
         menu.mostrarBienvenida();
@@ -19,6 +22,7 @@ public class Main {
             String acronimoMonedaBase = menu.ObtenerAcronimo(eleccionResultadoMonedaBase);
             String acronimoMonedaObjetivo = menu.ObtenerAcronimo(eleccionResultadoMonedaObjetivo);
 
+            System.out.println(new ApiExchangerate(acronimoMonedaBase, acronimoMonedaObjetivo).obtenerDatosApi());
 
         }
 
