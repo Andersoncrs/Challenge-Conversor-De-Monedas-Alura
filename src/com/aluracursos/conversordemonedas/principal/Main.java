@@ -40,7 +40,6 @@ public class Main {
                 System.out.println("Hubo un problema en la comunicación con el servidor" +
                         "Intentelo Mas Tarde.");
             }
-
         }
 
     }

@@ -2,11 +2,16 @@ package com.aluracursos.conversordemonedas.modelos;
 
 import com.aluracursos.conversordemonedas.dtos.ConversionMonedaExchangerate;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ConversorMoneda {
     private String monedaBase;
     private String monedaObjetivo;
     private String fechaActualizacionMoneda;
-    private String fechaConversion;
+    private String marcaDeTiempoConsulta;
     private double tasaDeCambio;
     private double valorMonedaBase;
     private double valorMonedaObjetivo;
@@ -16,6 +21,7 @@ public class ConversorMoneda {
         this.monedaObjetivo = monedaObjetivo;
         this.fechaActualizacionMoneda = monedaExchangerate.time_last_update_utc();
         this.tasaDeCambio = monedaExchangerate.conversion_rate();
+        this.marcaDeTiempoConsulta = capturarFechaConsultaUTC();
     }
 
     public void mostrarTasaDeCambio(String acronimoMonedaBase, String acronimoMonedaObjetivo){
@@ -37,6 +43,13 @@ public class ConversorMoneda {
         this.valorMonedaObjetivo = this.valorMonedaBase * this.tasaDeCambio;
         mostrarResultadoConversion();
     }
+    public String capturarFechaConsultaUTC(){
+        Instant ahora = Instant.now();
+        ZonedDateTime zdt = ahora.atZone(ZoneId.of("UTC"));
+        DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;
+        return zdt.format(formatter);
+    }
+
 
     public void mostrarResultadoConversion(){
         System.out.println("\n********************************************************************************");
@@ -44,6 +57,8 @@ public class ConversorMoneda {
         System.out.println("********************************************************************************");
         System.out.println("Valor " + this.monedaBase + ": " + this.valorMonedaBase + "$");
         System.out.println("Valor " + this.monedaObjetivo + ": " + this.valorMonedaObjetivo + "$");
+        System.out.println("********************************************************************************");
+        System.out.println("Marca de Tiempo de la Consulta: " + this.marcaDeTiempoConsulta);
         System.out.println("********************************************************************************\n");
     }
 }
