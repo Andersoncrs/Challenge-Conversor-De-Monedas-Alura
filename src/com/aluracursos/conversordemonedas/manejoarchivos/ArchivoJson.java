@@ -20,7 +20,7 @@ public class ArchivoJson {
             System.out.println("********************************************************************************");
 
         }catch (IOException e){
-            throw new ArchivoNoGuardadoException("\nHubo un Error al Intetar gurarar el Archivo." +
+            throw new ArchivoNoGuardadoException("\nHubo un Error al Intentar guardar el Archivo." +
                     "Intentelo de nuevo mas tarde");
         }
     }
