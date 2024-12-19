@@ -28,6 +28,22 @@ public class ConversorMoneda {
                 acronimoMonedaObjetivo +
                 " es de: " +
                 this.tasaDeCambio + " $");
+        System.out.println("Fecha De Actualizacion de la moneda: " + this.fechaActualizacionMoneda);
         System.out.println("********************************************************************************");
+    }
+    public void realizarConversionMoneda(double valorMonedaBase){
+        this.valorMonedaBase = valorMonedaBase;
+
+        this.valorMonedaObjetivo = this.valorMonedaBase * this.tasaDeCambio;
+        mostrarResultadoConversion();
+    }
+
+    public void mostrarResultadoConversion(){
+        System.out.println("\n********************************************************************************");
+        System.out.println("***************************** RESULTADO CONVERSION *****************************");
+        System.out.println("********************************************************************************");
+        System.out.println("Valor " + this.monedaBase + ": " + this.valorMonedaBase + "$");
+        System.out.println("Valor " + this.monedaObjetivo + ": " + this.valorMonedaObjetivo + "$");
+        System.out.println("********************************************************************************\n");
     }
 }

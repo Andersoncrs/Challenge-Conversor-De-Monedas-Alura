@@ -33,7 +33,8 @@ public class Main {
                         eleccionResultadoMonedaBase,
                         eleccionResultadoMonedaObjetivo);
                 conversorMoneda.mostrarTasaDeCambio(acronimoMonedaBase, acronimoMonedaObjetivo);
-                System.out.println(menu.ingresoValorMonedaBase(eleccionResultadoMonedaBase));
+                double valorMonedaBase =  menu.ingresoValorMonedaBase(eleccionResultadoMonedaBase);
+                conversorMoneda.realizarConversionMoneda(valorMonedaBase);
 
             } catch (IOException | InterruptedException e) {
                 System.out.println("Hubo un problema en la comunicación con el servidor" +
