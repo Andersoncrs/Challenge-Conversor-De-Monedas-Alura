@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Menu {
 
     Scanner scanner = new Scanner(System.in);
-    ListaMonedas listaMonedas = new ListaMonedas();
+    ListaMonedasDisponibles listaMonedasDisponibles = new ListaMonedasDisponibles();
 
     public void mostrarBienvenida(){
         System.out.println("""
@@ -25,7 +25,7 @@ public class Menu {
     public String mostrarmenuBase() {
         while (true) {
             System.out.println("Ingrese La moneda que desea Convertir: ");
-            List<String> listaDeMonedasDisponibles = listaMonedas.getListaDeMonedasDisponibles();
+            List<String> listaDeMonedasDisponibles = listaMonedasDisponibles.getListaDeMonedasDisponibles();
             mostrarMenu(listaDeMonedasDisponibles);
             System.out.println("- Para Salir ingrese la palabra \"salir\"");
             String eleccionUsuario = scanner.nextLine().toLowerCase().trim();
@@ -47,7 +47,7 @@ public class Menu {
             System.out.println("********************************************************************************");
             System.out.println("Moneda Base ingresada: " + monedaBase );
             System.out.println("********************************************************************************");
-            List<String> listaMenuObjetivo = new ArrayList<>(listaMonedas.getListaDeMonedasDisponibles());
+            List<String> listaMenuObjetivo = new ArrayList<>(listaMonedasDisponibles.getListaDeMonedasDisponibles());
             listaMenuObjetivo.remove(monedaBase);
             System.out.println("ingrese La moneda a la cual desea convertir ");
             mostrarMenu(listaMenuObjetivo);

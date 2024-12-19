@@ -4,6 +4,7 @@ import com.aluracursos.conversordemonedas.apis.ApiExchangerate;
 import com.aluracursos.conversordemonedas.conversordeformatos.ConversorJson;
 import com.aluracursos.conversordemonedas.dtos.ConversionMonedaExchangerate;
 import com.aluracursos.conversordemonedas.modelos.ConversorMoneda;
+import com.aluracursos.conversordemonedas.modelos.ListaMonedasConsultadas;
 import com.aluracursos.conversordemonedas.modelos.Menu;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ public class Main {
         Menu menu = new Menu();
 
         menu.mostrarBienvenida();
+        ListaMonedasConsultadas listaMonedasConsultadas = new ListaMonedasConsultadas();
 
         while(true){
             String eleccionResultadoMonedaBase = menu.mostrarmenuBase();
