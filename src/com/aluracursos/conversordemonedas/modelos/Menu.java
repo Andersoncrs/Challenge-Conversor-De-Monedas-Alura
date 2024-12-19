@@ -81,5 +81,25 @@ public class Menu {
     public String ObtenerAcronimo(String moneda){
         return moneda.trim().substring(0, 3).toUpperCase();
     }
+
+    public double ingresoValorMonedaBase(String monedaBase){
+        while(true){
+            System.out.println("\nPor favor ingrese el valor en " + monedaBase);
+            String ingresoValorUsuario = scanner.nextLine().trim();
+            if(!validacionNumeroPositivo(ingresoValorUsuario)){
+                System.out.println("Ha ingresado un numero no valido. " +
+                        "Por favor ingrese numero mayores positivos");
+                continue;
+            }
+            return Double.parseDouble(ingresoValorUsuario);
+        }
+    }
+
+    public boolean validacionNumeroPositivo(String numero){
+        if (numero.matches("^\\d+(\\.\\d+)?$")) {
+            return Double.parseDouble(numero) > 0;
+        }
+        return false;
+    }
 }
 
