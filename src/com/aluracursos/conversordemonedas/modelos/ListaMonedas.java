@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ListaMonedas {
     private final List<String>  listaDeMonedasDisponibles = new ArrayList<>(List.of(
-            "COP Peso Colombiano",
+            " COP Peso Colombiano",
             "ARS Peso Argentino",
             "VAS Bolivar Venezolano"
     ));

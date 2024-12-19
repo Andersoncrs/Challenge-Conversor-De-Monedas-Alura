@@ -44,7 +44,9 @@ public class Menu {
 
     public String mostrarMenuObjetivo(String monedaBase){
         while(true){
+            System.out.println("********************************************************************************");
             System.out.println("Moneda Base ingresada: " + monedaBase );
+            System.out.println("********************************************************************************");
             List<String> listaMenuObjetivo = new ArrayList<>(listaMonedas.getListaDeMonedasDisponibles());
             listaMenuObjetivo.remove(monedaBase);
             System.out.println("ingrese La moneda a la cual desea convertir ");
@@ -74,6 +76,10 @@ public class Menu {
             }
         }
         return "invalido";
+    }
+
+    public String ObtenerAcronimo(String moneda){
+        return moneda.trim().substring(0, 3);
     }
 }
 

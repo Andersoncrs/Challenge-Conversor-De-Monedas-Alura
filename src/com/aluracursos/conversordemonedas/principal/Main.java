@@ -9,13 +9,16 @@ public class Main {
         menu.mostrarBienvenida();
 
         while(true){
-            String eleccionResultadoMenuBase = menu.mostrarmenuBase();
+            String eleccionResultadoMonedaBase = menu.mostrarmenuBase();
 
-            if(eleccionResultadoMenuBase.equals("salir")){
+            if(eleccionResultadoMonedaBase.equals("salir")){
                 break;
             }
-            String eleccionResultadoMenuObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMenuBase);
-            System.out.println("Eleccion Moneda Objetivo: " + eleccionResultadoMenuObjetivo);
+            String eleccionResultadoMonedaObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMonedaBase);
+
+            String acronimoMonedaBase = menu.ObtenerAcronimo(eleccionResultadoMonedaBase);
+            String acronimoMonedaObjetivo = menu.ObtenerAcronimo(eleccionResultadoMonedaObjetivo);
+
 
         }
 
