@@ -1,8 +1,10 @@
 package com.aluracursos.conversordemonedas.principal;
 
+import com.aluracursos.conversordemonedas.Excepciones.ArchivoNoGuardadoException;
 import com.aluracursos.conversordemonedas.apis.ApiExchangerate;
 import com.aluracursos.conversordemonedas.conversordeformatos.ConversorJson;
 import com.aluracursos.conversordemonedas.dtos.ConversionMonedaExchangerate;
+import com.aluracursos.conversordemonedas.manejoarchivos.ArchivoJson;
 import com.aluracursos.conversordemonedas.modelos.ConversorMoneda;
 import com.aluracursos.conversordemonedas.modelos.ListaMonedasConsultadas;
 import com.aluracursos.conversordemonedas.modelos.Menu;
@@ -32,8 +34,12 @@ public class Main {
                     }
                     String jsonConversionesRealizadas = new ConversorJson(listaMonedasConsultadas).
                             ConvertirListaDeMonedasAJson();
-                    System.out.println(jsonConversionesRealizadas);
-                    continue;
+                    try {
+                        new ArchivoJson(jsonConversionesRealizadas).GuardarArchivo();
+                    } catch (ArchivoNoGuardadoException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break loopPrincipal;
             }
             String eleccionResultadoMonedaObjetivo = menu.mostrarMenuObjetivo(eleccionResultadoMonedaBase);
 
@@ -57,6 +63,7 @@ public class Main {
                         "Intentelo Mas Tarde.");
             }
         }
+        menu.mostrarDespedida();
 
     }
 }

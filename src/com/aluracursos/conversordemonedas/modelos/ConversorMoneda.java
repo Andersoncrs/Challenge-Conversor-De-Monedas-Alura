@@ -8,11 +8,11 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ConversorMoneda {
-    private String monedaBase;
-    private String monedaObjetivo;
-    private String fechaActualizacionMoneda;
-    private String marcaDeTiempoConsulta;
-    private double tasaDeCambio;
+    private final String monedaBase;
+    private final String monedaObjetivo;
+    private final String fechaActualizacionMoneda;
+    private final String marcaDeTiempoConsulta;
+    private final double tasaDeCambio;
     private double valorMonedaBase;
     private double valorMonedaObjetivo;
 
@@ -55,8 +55,8 @@ public class ConversorMoneda {
         System.out.println("\n********************************************************************************");
         System.out.println("***************************** RESULTADO CONVERSION *****************************");
         System.out.println("********************************************************************************");
-        System.out.println("Valor " + this.monedaBase + ": " + this.valorMonedaBase + "$");
-        System.out.println("Valor " + this.monedaObjetivo + ": " + this.valorMonedaObjetivo + "$");
+        System.out.println("Valor " + this.monedaBase + ": " + this.valorMonedaBase + " $");
+        System.out.printf("Valor  %s: %.2f $ \n", this.monedaObjetivo, this.valorMonedaObjetivo);
         System.out.println("********************************************************************************");
         System.out.println("Marca de Tiempo de la Consulta: " + this.marcaDeTiempoConsulta);
         System.out.println("********************************************************************************\n");
@@ -67,7 +67,7 @@ public class ConversorMoneda {
         System.out.println("MonedaObjetivo: " + this.monedaObjetivo);
         System.out.println("Tasa de Cambio: " + this.tasaDeCambio);
         System.out.println("Valor Moneda Base: " + this.valorMonedaBase);
-        System.out.println("Valor Moneda Objetivo: " + this.valorMonedaObjetivo);
+        System.out.printf("Valor Moneda Objetivo: " + this.valorMonedaObjetivo);
         System.out.println("Fecha de Actualización Moneda: " + this.fechaActualizacionMoneda);
         System.out.println("Marca de Tiempo de la Consulta: " + this.marcaDeTiempoConsulta);
     }

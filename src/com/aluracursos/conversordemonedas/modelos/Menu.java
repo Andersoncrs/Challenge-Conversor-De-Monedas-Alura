@@ -32,7 +32,7 @@ public class Menu {
             List<String> listaDeMonedasDisponibles = listaMonedasDisponibles.getListaDeMonedasDisponibles();
             mostrarMenu(listaDeMonedasDisponibles);
             System.out.println("\n- Para Consultar el Historial, ingrese la palabra \"historial\"");
-            System.out.println("- Para Guadar el Historial de Conversiones ingrese \"guardar\"");
+            System.out.println("- Para Guadar el Historial de Conversiones y salir ingrese \"guardar\"");
             System.out.println("- Para Salir ingrese la palabra \"salir\"");
             String eleccionUsuario = scanner.nextLine().toLowerCase().trim();
 
@@ -47,7 +47,7 @@ public class Menu {
                 case "valido":
                     return listaDeMonedasDisponibles.get(Integer.parseInt(eleccionUsuario) - 1);
                 case "invalido":
-                    System.out.println("Ha ingresado un valor invalido. Intentelo de nuevo\n");
+                    mostrarMensajeValorInvalido();
             }
         }
     }
@@ -67,7 +67,8 @@ public class Menu {
             if(validacion.equals("valido")){
                 return listaMenuObjetivo.get(Integer.parseInt(validacionIngresoMenuObjetivo) - 1);
             }
-            System.out.println("Ha ingresado un valor invalido. Intentelo de nuevo ");
+            mostrarMensajeValorInvalido();
+
         }
     }
 
@@ -101,8 +102,10 @@ public class Menu {
             System.out.println("\nPor favor ingrese el valor en " + monedaBase);
             String ingresoValorUsuario = scanner.nextLine().trim();
             if(!validacionNumeroPositivo(ingresoValorUsuario)){
+                System.out.println("\n********************************************************************************");
                 System.out.println("Ha ingresado un numero no valido. " +
                         "Por favor ingrese numero mayores positivos");
+                System.out.println("********************************************************************************");
                 continue;
             }
             return Double.parseDouble(ingresoValorUsuario);
@@ -114,6 +117,19 @@ public class Menu {
             return Double.parseDouble(numero) > 0;
         }
         return false;
+    }
+
+    public void mostrarMensajeValorInvalido(){
+        System.out.println("\n********************************************************************************");
+        System.out.println("Ha ingresado un valor invalido. Intentelo de nuevo ");
+        System.out.println("********************************************************************************");
+    }
+
+    public void mostrarDespedida(){
+        System.out.println("\n********************************************************************************");
+        System.out.println("******************** GRACIAS POR UTILIZAR NUESTROS SERVICIOS ******************* ");
+        System.out.println("********************************************************************************");
+
     }
 }
 
