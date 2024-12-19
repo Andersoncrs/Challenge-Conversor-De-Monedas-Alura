@@ -7,9 +7,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ApiExchangerate {
-    private String acronimoMonedaBase;
-    private String acronimoMonedaObjetivo;
-    private String plantillaUri =  "https://v6.exchangerate-api.com/v6/342317a62823f406dd7cc9c3/pair/";
+    private final String acronimoMonedaBase;
+    private final String acronimoMonedaObjetivo;
 
     public ApiExchangerate(String acronimoMonedaBase, String acronimoMonedaObjetivo) {
         this.acronimoMonedaBase = acronimoMonedaBase;
@@ -17,6 +16,7 @@ public class ApiExchangerate {
     }
     public String obtenerDatosApi() throws IOException, InterruptedException {
 
+        String plantillaUri = "https://v6.exchangerate-api.com/v6/342317a62823f406dd7cc9c3/pair/";
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(plantillaUri + acronimoMonedaBase + "/" + acronimoMonedaObjetivo))
                 .GET()
