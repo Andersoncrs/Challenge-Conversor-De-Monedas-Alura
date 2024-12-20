@@ -11,7 +11,10 @@ public class ListaMonedasDisponibles {
     private final List<String> listaDeMonedasDisponibles = new ArrayList<>(List.of(
             "COP Peso Colombiano",
             "ARS Peso Argentino",
-            "VES Bolivar Venezolano"
+            "VES Bolivar Venezolano",
+            "MXN peso Mexicano",
+            "USD Dólar Estadounidense",
+            "PEN Nuevo Sol"
     ));
 
     /**
