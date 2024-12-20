@@ -7,6 +7,10 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Clase encargada de realizar la conversión entre dos monedas utilizando una tasa de cambio proporcionada.
+ * Además, gestiona la visualización de los resultados de la conversión y detalles relacionados con la operación.
+ */
 public class ConversorMoneda {
     private final String monedaBase;
     private final String monedaObjetivo;
@@ -16,7 +20,14 @@ public class ConversorMoneda {
     private double valorMonedaBase;
     private double valorMonedaObjetivo;
 
-    public ConversorMoneda(ConversionMonedaExchangerate monedaExchangerate,String monedaBase, String monedaObjetivo){
+    /**
+     * Constructor de la clase ConversorMoneda.
+     *
+     * @param monedaExchangerate Objeto DTO que contiene la tasa de cambio y la fecha de actualización de la moneda.
+     * @param monedaBase El acrónimo de la moneda base.
+     * @param monedaObjetivo El acrónimo de la moneda objetivo.
+     */
+    public ConversorMoneda(ConversionMonedaExchangerate monedaExchangerate, String monedaBase, String monedaObjetivo) {
         this.monedaBase = monedaBase;
         this.monedaObjetivo = monedaObjetivo;
         this.fechaActualizacionMoneda = monedaExchangerate.time_last_update_utc();
@@ -24,9 +35,15 @@ public class ConversorMoneda {
         this.marcaDeTiempoConsulta = capturarFechaConsultaUTC();
     }
 
-    public void mostrarTasaDeCambio(String acronimoMonedaBase, String acronimoMonedaObjetivo){
+    /**
+     * Muestra la tasa de cambio entre la moneda base y la moneda objetivo.
+     *
+     * @param acronimoMonedaBase El acrónimo de la moneda base.
+     * @param acronimoMonedaObjetivo El acrónimo de la moneda objetivo.
+     */
+    public void mostrarTasaDeCambio(String acronimoMonedaBase, String acronimoMonedaObjetivo) {
         System.out.println("\n********************************************************************************");
-        System.out.println("Moneda Base ingresada: " + this.monedaBase );
+        System.out.println("Moneda Base ingresada: " + this.monedaBase);
         System.out.println("Moneda Objetivo: " + this.monedaObjetivo);
         System.out.println("La tasa de cambio de " +
                 acronimoMonedaBase +
@@ -37,21 +54,35 @@ public class ConversorMoneda {
         System.out.println("Fecha De Actualización de la moneda: " + this.fechaActualizacionMoneda);
         System.out.println("********************************************************************************");
     }
-    public void realizarConversionMoneda(double valorMonedaBase){
-        this.valorMonedaBase = valorMonedaBase;
 
+    /**
+     * Realiza la conversión del valor de la moneda base a la moneda objetivo.
+     *
+     * @param valorMonedaBase El valor de la moneda base a convertir.
+     */
+    public void realizarConversionMoneda(double valorMonedaBase) {
+        this.valorMonedaBase = valorMonedaBase;
         this.valorMonedaObjetivo = this.valorMonedaBase * this.tasaDeCambio;
         mostrarResultadoConversion();
     }
-    public String capturarFechaConsultaUTC(){
+
+    /**
+     * Captura la fecha y hora actual en formato UTC.
+     *
+     * @return La fecha y hora actual en formato UTC como una cadena de texto.
+     */
+    public String capturarFechaConsultaUTC() {
         Instant ahora = Instant.now();
         ZonedDateTime zdt = ahora.atZone(ZoneId.of("UTC"));
         DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;
         return zdt.format(formatter);
     }
 
-
-    public void mostrarResultadoConversion(){
+    /**
+     * Muestra el resultado de la conversión, incluyendo el valor de la moneda base, la moneda objetivo
+     * y la marca de tiempo de la consulta.
+     */
+    public void mostrarResultadoConversion() {
         System.out.println("\n********************************************************************************");
         System.out.println("***************************** RESULTADO CONVERSION *****************************");
         System.out.println("********************************************************************************");
@@ -62,9 +93,13 @@ public class ConversorMoneda {
         System.out.println("********************************************************************************\n");
     }
 
-    public void mostrarDetallesMoneda(){
+    /**
+     * Muestra los detalles completos de la conversión de moneda, incluyendo la moneda base, la moneda objetivo,
+     * la tasa de cambio, el valor de la moneda base y el valor convertido.
+     */
+    public void mostrarDetallesMoneda() {
         System.out.println("Moneda Base: " + this.monedaBase);
-        System.out.println("MonedaObjetivo: " + this.monedaObjetivo);
+        System.out.println("Moneda Objetivo: " + this.monedaObjetivo);
         System.out.println("Tasa de Cambio: " + this.tasaDeCambio);
         System.out.println("Valor Moneda Base: " + this.valorMonedaBase);
         System.out.printf("Valor Moneda Objetivo: " + this.valorMonedaObjetivo);
